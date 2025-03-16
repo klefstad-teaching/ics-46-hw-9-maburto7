@@ -25,7 +25,7 @@ bool is_adjacent(const string& word1, const string& word2){
     if(abs(s1-s2) > 1) return false;
     int count = 0, i = 0, j = 0;
     while(i < s1 && j < s2){
-        if(str1[i] != str2[j]){
+        if(word1[i] != word2[j]){
             if(s1 > s2) ++i;
             else if(s1 < s2) ++j;
             else{++i;++j;}
