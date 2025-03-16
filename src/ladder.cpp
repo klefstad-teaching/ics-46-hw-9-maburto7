@@ -21,14 +21,19 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     }
 
 bool is_adjacent(const string& word1, const string& word2){
-    int countDifference = 0;
-    for(unsigned int i = 0; i < word1.size();++i){
-        if(word1[i] != word2[i]){
-            ++countDifference;
-            if(countDifference>1) return false;
-        }
+    int s1 = str1.size(); int s2 = str2.size();
+    if(abs(s1-s2) > 1) return false;
+    int count = 0, i = 0, j = 0;
+    while(i < s1 && j < s2){
+        if(str1[i] != str2[j]){
+            if(s1 > s2) ++i;
+            else if(s1 < s2) ++j;
+            else{++i;++j;}
+            ++count;
+        } else{++i;++j;}
     }
-    return countDifference == 1;
+    if(i<s1 || j < s2) ++count;
+    return count == 1;
 }
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list){
@@ -66,7 +71,8 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 
 
 void print_word_ladder(const vector<string>& ladder){
-    cout << "Word Ladder: ";
+    if(ladder.empty()){cout<< "No word ladder found."; return;}
+    cout << "Word ladder found: ";
     for (const string& word : ladder) { cout << word << " ";}
     cout << endl;
     }
