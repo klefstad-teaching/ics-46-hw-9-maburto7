@@ -75,7 +75,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 
 
 void print_word_ladder(const vector<string>& ladder){
-    if(ladder.empty()){cout<< "No word ladder found."; return;}
+    if(ladder.empty()){cout<< "No word ladder found.\n"; return;}
     cout << "Word ladder found: ";
     for (const string& word : ladder) { cout << word << " ";}
     cout << endl;
