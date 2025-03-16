@@ -5,8 +5,6 @@ void error(string word1, string word2, string msg){
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d){
-    if (str1.size() != str2.size()) return false;
-
     int count = 0;
     for (size_t i = 0; i < str1.size(); ++i) {
         if (str1[i] != str2[i]) {
