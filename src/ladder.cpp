@@ -1,7 +1,7 @@
 #include "ladder.h"
 
 void error(string word1, string word2, string msg){
-
+    cout<<msg<<" with words: "<<word1<<" "<<word2<<endl;
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d){
@@ -21,7 +21,7 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
     }
 
 bool is_adjacent(const string& word1, const string& word2){
-    int s1 = str1.size(); int s2 = str2.size();
+    int s1 = str1.length(); int s2 = str2.length();
     if(abs(s1-s2) > 1) return false;
     int count = 0, i = 0, j = 0;
     while(i < s1 && j < s2){
