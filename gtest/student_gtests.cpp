@@ -4,6 +4,9 @@
 #include "ladder.h"
 
 TEST(WordLadderTest, BasicTest) {
+
+    EXPECT_EQ(edit_distance_within("apple", "bapple",1), true);
+
     set<string> word_list = {"hit", "hot", "dot", "dog", "cog"};
     vector<string> ladder = generate_word_ladder("hit", "cog", word_list);
     vector<string> expected_ladder = {"hit", "hot", "dot", "dog", "cog"};
@@ -21,6 +24,7 @@ TEST(WordLadderTest, NoLadderTest) {
 
 
 TEST(DijkstraTest, Me) {
+
   
   Graph G;
     EXPECT_EQ(G.numVertices, 0);

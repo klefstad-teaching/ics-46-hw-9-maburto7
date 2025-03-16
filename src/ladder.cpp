@@ -5,14 +5,19 @@ void error(string word1, string word2, string msg){
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d){
-    int count = 0;
-    for (size_t i = 0; i < str1.size(); ++i) {
-        if (str1[i] != str2[i]) {
+    int s1 = str1.size(); int s2 = str2.size();
+    if(abs(s1-s2) > d) return false;
+    int count = 0, i = 0, j = 0;
+    while(i < s1 && j < s2){
+        if(str1[i] != str2[j]){ //check if char not the same
+            if(s1 > s2) ++i; //if bigger length than remove
+            else if(s1 < s2) ++j; //remove the other str
+            else{++i;++j;} //go to next char
             ++count;
-            if (count > d) return false;
-        }
+        } else{++i;++j;}
     }
-    return count <= d;
+    if(i<s1 || j < s2) ++count;
+    return count == d;
     }
 
 bool is_adjacent(const string& word1, const string& word2){
