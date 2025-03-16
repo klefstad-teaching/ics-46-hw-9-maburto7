@@ -84,5 +84,5 @@ void load_words(set<string> & word_list, const string& file_name){
 
 void verify_word_ladder(){
     set<string> word_list;
-    load_words(word_list, "small.txt");
+    //load_words(word_list, "small.txt");
 }
