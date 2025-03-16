@@ -5,6 +5,7 @@ void error(string word1, string word2, string msg){
 }
 
 bool edit_distance_within(const std::string& str1, const std::string& str2, int d){
+    if(str1==str2) return true;
     int s1 = str1.size(); int s2 = str2.size();
     if(abs(s1-s2) > d) return false;
     int count = 0, i = 0, j = 0;
@@ -16,11 +17,13 @@ bool edit_distance_within(const std::string& str1, const std::string& str2, int 
             ++count;
         } else{++i;++j;}
     }
-    if(i<s1 || j < s2) ++count;
+    count += abs(s1 - i);
+    count += abs(s2 - j);
     return count == d;
     }
 
 bool is_adjacent(const string& word1, const string& word2){
+    if(word1==word2) return true;
     int s1 = word1.length(); int s2 = word2.length();
     if(abs(s1-s2) > 1) return false;
     int count = 0, i = 0, j = 0;
@@ -32,7 +35,8 @@ bool is_adjacent(const string& word1, const string& word2){
             ++count;
         } else{++i;++j;}
     }
-    if(i<s1 || j < s2) ++count;
+    count += abs(s1 - i);
+    count += abs(s2 - j);
     return count == 1;
 }
 

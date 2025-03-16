@@ -6,6 +6,8 @@
 TEST(WordLadderTest, BasicTest) {
 
     EXPECT_EQ(edit_distance_within("apple", "bapple",1), true);
+    EXPECT_EQ(edit_distance_within("apple", "apple",1), true);
+    EXPECT_EQ(is_adjacent("apple", "apple"), true);
 
     set<string> word_list = {"hit", "hot", "dot", "dog", "cog"};
     vector<string> ladder = generate_word_ladder("hit", "cog", word_list);
